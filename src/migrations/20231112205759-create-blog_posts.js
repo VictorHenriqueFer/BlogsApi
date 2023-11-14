@@ -27,7 +27,7 @@ module.exports = {
         }
       },
       published:{
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.DATE,
         allowNull: false
       },
       updated:{
