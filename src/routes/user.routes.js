@@ -21,4 +21,10 @@ route.post(
   userController.createUser,
 );
 
+route.delete(
+  '/me',
+  auth,
+  userController.deleteMe,
+);
+
 module.exports = route;

@@ -24,4 +24,16 @@ route.post(
   postController.createPost,
 );
 
+route.put(
+  '/:id',
+  auth,
+  postController.updatePost,
+);
+
+route.delete(
+  '/:id',
+  auth,
+  postController.deleteUpdtade,
+);
+
 module.exports = route;

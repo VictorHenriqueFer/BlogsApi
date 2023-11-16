@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       Category.hasMany(models.PostCategory, {
         foreignKey: 'categoryId',
         as: 'posts',
+        onDelete: 'CASCADE',
       });
     }
     return Category;

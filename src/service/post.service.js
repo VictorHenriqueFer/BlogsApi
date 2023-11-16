@@ -34,8 +34,38 @@ const findById = async (id) => {
   return post;
 };
 
+const updatePost = async (title, content, id) => {
+  await BlogPost.update({ title, content }, { where: { id } });
+
+  const postReturn = await BlogPost.findOne({
+    where: { id },
+    include: [
+      {
+        model: User,
+        as: 'user',
+        attributes: { exclude: ['password'] },
+      },
+      {
+        model: Category,
+        as: 'categories',
+      },
+    ],
+  });
+
+  return postReturn;
+};
+
+const deletePost = async (id) => {
+  await PostCategory.destroy({ where: { postId: id } });
+  const post = await BlogPost.findOne({ where: { id } });
+  await BlogPost.destroy({ where: { id } });
+  return post;
+};
+
 module.exports = {
   getAllPost,
   createPost,
   findById,
+  updatePost,
+  deletePost,
 };

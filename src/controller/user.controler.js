@@ -21,9 +21,15 @@ const createUser = async (req, res) => {
   const result = await userService.createUser(displayName, email, password, image);
   res.status(result.status).json(result.data);
 };
+const deleteMe = async (req, res) => {
+  const { id } = req.user;
+  await userService.deleteMe(id);
+  res.status(204).end();
+};
 
 module.exports = {
   getAllUsers,
   createUser,
   findById,
+  deleteMe,
 };
