@@ -7,7 +7,6 @@ const auth = (req, res, next) => {
   if (!token) return res.status(401).json({ message: 'Token not found' });
   
   const tokenBarer = token.split(' ')[1];
-
   try {
     const payload = jwt.verify(tokenBarer, KEY);
     req.user = payload;

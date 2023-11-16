@@ -9,8 +9,8 @@ const login = async (email, password) => {
   }
   const user = await User.findOne({ where: { email, password } });
   if (!user) return { status: 400, data: { message: 'Invalid fields' } };
-  const { password: _, ...payload } = user;
-  const token = jwt.sign(payload, KEY, { expiresIn: '2d' });
+  const { password: _, ...dataValues } = user;
+  const token = jwt.sign(dataValues, KEY, { expiresIn: '10d' });
   return { status: 200, data: { token } };
 };
 
