@@ -22,7 +22,8 @@ const createUser = async (req, res) => {
   res.status(result.status).json(result.data);
 };
 const deleteMe = async (req, res) => {
-  const { id } = req.user;
+  const { id } = req.user.dataValues;
+  console.log(id);
   await userService.deleteMe(id);
   res.status(204).end();
 };

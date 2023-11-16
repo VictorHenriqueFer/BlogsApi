@@ -9,8 +9,9 @@ module.exports = {
         foreingKey: true,
         references: {
           model: 'blog_posts',
-          key: 'id'
-        }
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
       },
       category_id: {
         type: Sequelize.INTEGER,
@@ -18,8 +19,9 @@ module.exports = {
         foreingKey: true,
         references: {
           model: 'categories',
-          key: 'id'
-        }
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
       },
       
       });
